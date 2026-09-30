@@ -1,0 +1,27 @@
+/* Container principal que envolve as duas seções */
+main {
+  display: flex;
+  /* Opcional: define se as seções ficam lado a lado (row) ou uma embaixo da outra (column) */
+  flex-direction: col; 
+  gap: 20px; /* Espaçamento entre as seções */
+}
+
+/* Primeira seção: ocupa o espaço disponível em uma única coluna vertical */
+.secao-1 {
+  flex: 1; /* Ocupa 50% da largura se houver duas seções em row */
+  display: flex;
+  flex-direction: col; /* Itens filhos empilhados verticalmente */
+}
+
+/* Segunda seção: dividida em duas colunas horizontais */
+.secao-2 {
+  flex: 1; /* Ocupa os outros 50% da largura */
+  display: flex;
+  flex-direction: col; /* Itens filhos lado a lado (cria as duas colunas) */
+  gap: 10px; /* Espaçamento entre as colunas */
+}
+
+/* Itens dentro da segunda seção */
+.coluna-da-secao-2 {
+  flex: 1; /* As duas colunas dividem o espaço igualmente */
+}

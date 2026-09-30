@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONG Quatro Patas | Resgate e Adoção Responsável</title>
+  <link rel="stylesheet" href="../assets/css/projeto2_final_2.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+     CABEÇALHO E NAVEGAÇÃO RESPONSIVA
+     ========================================================================== -->
+  <header class="header-container">
+    <a href="#" class="logo">Quatro Patas</a>
+
+    <button 
+      class="menu-toggle" 
+      aria-label="Abrir menu de navegação" 
+      aria-expanded="false" 
+      aria-controls="primary-navigation"
+    >
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <nav class="nav-menu" id="primary-navigation">
+      <ul>
+        <li><a href="#adocao">Adotar</a></li>
+        <li><a href="#como-ajudar">Como Ajudar</a></li>
+        <li><a href="#resgates">Resgates</a></li>
+        <li><a href="#sobre">Sobre Nós</a></li>
+        <li><a href="#doe" class="btn-primary">Doe Agora</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+     CONTEÚDO PRINCIPAL (LAYOUT CSS GRID DE 12 COLUNAS)
+     ========================================================================== -->
+  <main class="grid-container">
+
+    <!-- BANNER HERO DE DESTAQUE (12 Colunas) -->
+    <section class="col-12 hero-container">
+      <div class="col-12 col-md-8">
+        <span class="badge badge-danger">Urgente</span>
+        <h1>Ajude a transformar vidas animais</h1>
+        <p>A ONG Quatro Patas atua no resgate, reabilitação e encaminhamento de cães e gatos para adoção responsável.</p>
+        <a href="#como-ajudar" class="btn-primary">Seja um Voluntário</a>
+      </div>
+    </section>
+
+    <!-- CAIXA DE ALERTA CONTEXTUAL (12 Colunas) -->
+    <section class="col-12">
+      <div class="alert alert-info" role="alert">
+        <strong class="alert-title">Próximo Evento:</strong> Feira de Adoção no Parque Central neste sábado, das 10h às 17h.
+      </div>
+    </section>
+
+    <!-- SIDEBAR DE FILTROS DE ADOÇÃO (3 Colunas em Desktop / 12 no Mobile) -->
+    <aside class="col-12 col-md-4 col-lg-3" id="adocao">
+      <h2>Filtros</h2>
+      <form class="filter-form">
+        <div class="form-group">
+          <label for="filtro-especie">Espécie</label>
+          <select id="filtro-especie" class="form-control">
+            <option value="">Todas</option>
+            <option value="cao">Cães</option>
+            <option value="gato">Gatos</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="filtro-porte">Porte</label>
+          <select id="filtro-porte" class="form-control">
+            <option value="">Todos</option>
+            <option value="pequeno">Pequeno</option>
+            <option value="medio">Médio</option>
+            <option value="grande">Grande</option>
+          </select>
+        </div>
+      </form>
+    </aside>
+
+    <!-- FEED DE ANIMAIS PARA ADOÇÃO (9 Colunas em Desktop / 12 no Mobile) -->
+    <section class="col-12 col-md-8 col-lg-9 feed-pets">
+
+      <!-- CARD DE PET 1 -->
+      <article class="col-12 col-sm-6 col-lg-4 col-xxl-3 pet-card">
+        <div class="pet-card-header">
+          <span class="badge badge-success">Disponível</span>
+        </div>
+        <div class="pet-card-body">
+          <h3>Thor</h3>
+          <p>Macho • 2 anos • Porte Médio</p>
+          <button class="btn-primary btn-modal-trigger">Quero Adotar</button>
+        </div>
+      </article>
+
+      <!-- CARD DE PET 2 -->
+      <article class="col-12 col-sm-6 col-lg-4 col-xxl-3 pet-card">
+        <div class="pet-card-header">
+          <span class="badge badge-warning">Em Tratamento</span>
+        </div>
+        <div class="pet-card-body">
+          <h3>Luna</h3>
+          <p>Fêmea • 1 ano • Porte Pequeno</p>
+          <button class="btn-primary" disabled>Em Breve</button>
+        </div>
+      </article>
+
+      <!-- CARD DE PET 3 -->
+      <article class="col-12 col-sm-6 col-lg-4 col-xxl-3 pet-card">
+        <div class="pet-card-header">
+          <span class="badge badge-success">Disponível</span>
+        </div>
+        <div class="pet-card-body">
+          <h3>Mel</h3>
+          <p>Fêmea • 3 anos • Porte Grande</p>
+          <button class="btn-primary btn-modal-trigger">Quero Adotar</button>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- FORMULÁRIO DE CADASTRO COM VALIDAÇÃO (12 Colunas) -->
+    <section class="col-12 form-section" id="como-ajudar">
+      <h2>Cadastre-se para Apadrinhamento ou Voluntariado</h2>
+      <form class="grid-container" novalidate>
+        
+        <div class="col-12 col-md-6 form-group">
+          <label for="nome">Nome Completo</label>
+          <input type="text" id="nome" class="form-control is-valid" value="Maria Silva" required>
+        </div>
+
+        <div class="col-12 col-md-6 form-group">
+          <label for="email">E-mail para Contato</label>
+          <input type="email" id="email" class="form-control is-invalid" value="email-invalido" required>
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn-primary">Enviar Cadastro</button>
+        </div>
+
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+     COMPONENTES DE FEEDBACK: MODAL E TOAST
+     ========================================================================== -->
+  <!-- MODAL DE ADOÇÃO -->
+  <div class="modal-backdrop" id="modal-adocao" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+      <header class="modal-header">
+        <h2 id="modal-title" class="modal-title">Confirmar Interesse de Adoção</h2>
+        <button class="modal-close" aria-label="Fechar modal">&times;</button>
+      </header>
+      <div class="modal-body">
+        <p>Você está prestes a iniciar o processo de entrevista para adoção. Deseja confirmar o formulário?</p>
+      </div>
+      <footer class="modal-footer">
+        <button class="btn-secondary modal-close-btn">Cancelar</button>
+        <button class="btn-primary" id="btn-confirmar-adocao">Confirmar</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- CONTAINER DE NOTIFICAÇÕES TOAST -->
+  <div class="toast-container" aria-live="polite" aria-atomic="true">
+    <div class="toast toast-success" id="toast-sucesso" style="display: none;">
+      <span>Operação realizada com sucesso!</span>
+      <button class="toast-close" aria-label="Fechar notificação">&times;</button>
+    </div>
+  </div>
+
+  <!-- SCRIPT DE INTERATIVIDADE -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toggle Menu Hambúrguer
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+
+      menuToggle.addEventListener('click', () => {
+        const isActive = navMenu.classList.toggle('is-active');
+        menuToggle.classList.toggle('is-active');
+        menuToggle.setAttribute('aria-expanded', isActive);
+      });
+
+      // Lógica de Modal
+      const modalBackdrop = document.getElementById('modal-adocao');
+      const modalTriggers = document.querySelectorAll('.btn-modal-trigger');
+      const modalCloses = document.querySelectorAll('.modal-close, .modal-close-btn');
+
+      modalTriggers.forEach(btn => {
+        btn.addEventListener('click', () => {
+          modalBackdrop.classList.add('is-open');
+          modalBackdrop.setAttribute('aria-hidden', 'false');
+        });
+      });
+
+      modalCloses.forEach(btn => {
+        btn.addEventListener('click', () => {
+          modalBackdrop.classList.remove('is-open');
+          modalBackdrop.setAttribute('aria-hidden', 'true');
+        });
+      });
+
+      // Lógica de Toast
+      const btnConfirmar = document.getElementById('btn-confirmar-adocao');
+      const toast = document.getElementById('toast-sucesso');
+
+      if (btnConfirmar) {
+        btnConfirmar.addEventListener('click', () => {
+          modalBackdrop.classList.remove('is-open');
+          toast.style.display = 'flex';
+          setTimeout(() => {
+            toast.style.display = 'none';
+          }, 4000);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

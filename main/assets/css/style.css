@@ -1,0 +1,336 @@
+/* - O roteiro exige uma paleta composta por pelo menos 8 cores distintas (primárias, secundárias e tons neutros) 
+, a organização da tipografia em no mínimo 5 patamares hierárquicos e a implementação técnica de espaçamentos modulares fundamentais baseados numa escala estrita. --> */
+:root {
+  /* ==========================================================================
+     1. PALETA DE CORES (8 Cores Distintas)
+     ========================================================================== */
+  /* Cores Primárias (Identidade Visual e Ações) */
+  --color-primary: #dc9563;         /* Laranja, tijolo - Confiança, credibilidade e ação principal #1E56A0*/
+  --color-primary-hover: be6a6a;   /* Laranja Escuro - Estado hover para botões/links */
+
+  /* Cores Secundárias (Destaque e Identidade Emocional) */
+  --color-secondary: #D65A31;       /* Terracota/Laranja - Acolhimento, calor humano e urgência de adoção */
+  --color-secondary-hover: #B04320; /* Terracota Escuro - Estado hover para elementos secundários */
+
+  /* Tons Neutros e Superfícies */
+  --color-neutral-dark: #222831;    /* Grafite Escuro - Tipografia principal (Alto contraste) */
+  --color-neutral-medium: #645e5e;  /* Cinza Médio - Textos secundários e bordas */
+  --color-neutral-light: # 8a8484;   /* Cinza Claro - Backgrounds de cards e seções */
+  --color-neutral-white: #FFFFFF;   /* Branco - Fundo da página e texto em botões escuros */
+
+  /* ==========================================================================
+     2. ESCALA TIPOGRÁFICA (5 Patamares Hierárquicos)
+     ========================================================================== */
+  --font-size-xs: 0.900rem; /* 14px - Legendas, badges e microcopy */
+  --font-size-sm: 1.200rem; /* 16px - Corpo de texto padrão e botões */
+  --font-size-md: 1.750rem; /* 20px - Subtítulos de cards e h3 */
+  --font-size-lg: 2.500rem; /* 28px - Títulos de seções e h2 */
+  --font-size-xl: 4.500rem; /* 40px - Título principal (Hero) e h1 */
+
+  /* ==========================================================================
+     3. ESPAÇAMENTOS MODULARES (Escala de 8px)
+     ========================================================================== */
+  --space-xs: 0.5rem;  /* 8px  - Margens internas pequenas, gap entre ícone e texto */
+  --space-sm: 1.0rem;  /* 16px - Padding de botões e espaçamento de elementos internos */
+  --space-md: 1.5rem;  /* 24px - Padding de cards e espaçamento entre parágrafos */
+  --space-lg: 2.5rem;  /* 40px - Margens de seções e lacunas do grid principal */
+  --space-xl: 4.0rem;  /* 64px - Espaçamento do container principal e banners */
+}
+/* INICIO DO QUE FOI ACRESCENTAD */
+/* ==========================================================================
+   CONFIGURAÇÃO BASE: MOBILE-FIRST (< 576px)
+   ========================================================================== */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-sm); /* Gutter de 16px */
+  padding: 0 var(--space-sm);
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Por padrão no Mobile, elementos ocupam a largura total de 12 colunas */
+.col-12, .col-8, .col-6, .col-4, .col-3 {
+  grid-column: span 12;
+}
+
+
+/* ==========================================================================
+   1. BREAKPOINT EXTRA SMALL / MOBILE LANDSCAPE (≥ 576px)
+   Dispositivos móveis na horizontal e telas pequenas.
+   ========================================================================== */
+@media (min-width: 576px) {
+  .grid-container {
+    gap: var(--space-md); /* Aumenta o espaçamento entre colunas para 24px */
+    padding: 0 var(--space-md);
+  }
+
+  /* Exemplo: Cards de animais passam a 2 colunas por linha */
+  .col-sm-6 {
+    grid-column: span 6;
+  }
+}
+
+
+/* ==========================================================================
+   2. BREAKPOINT SMALL / TABLETS PORTRAIT (≥ 768px)
+   Tablets na vertical. Separação de áreas de filtros e listagens.
+   ========================================================================== */
+@media (min-width: 768px) {
+  .grid-container {
+    max-width: 720px;
+  }
+
+  .col-md-4 {
+    grid-column: span 4; /* 3 itens por linha */
+  }
+
+  .col-md-6 {
+    grid-column: span 6; /* 2 itens por linha */
+  }
+
+  .col-md-8 {
+    grid-column: span 8; /* Área de conteúdo principal */
+  }
+}
+
+
+/* ==========================================================================
+   3. BREAKPOINT MEDIUM / TABLETS LANDSCAPE E LAPTOPS (≥ 992px)
+   Navegação e layouts mais robustos, permitindo barra lateral (Sidebar).
+   ========================================================================== */
+@media (min-width: 992px) {
+  .grid-container {
+    max-width: 960px;
+  }
+
+  .col-lg-3 {
+    grid-column: span 3; /* Sidebar de Filtro de Adoção (1/4 da tela) */
+  }
+
+  .col-lg-9 {
+    grid-column: span 9; /* Feed de Animais (3/4 da tela) */
+  }
+
+  .col-lg-4 {
+    grid-column: span 4; /* Grid triplo para notícias e resgates */
+  }
+}
+
+
+
+/* ==========================================================================
+   4. BREAKPOINT LARGE / DESKTOPS PADRÃO (≥ 1200px)
+   Telas cheias com espaçamento ideal para leitura e doações.
+   ========================================================================== */
+@media (min-width: 1200px) {
+  .grid-container {
+    max-width: 1140px;
+    gap: var(--space-lg); /* Gutter expandido para 40px */
+  }
+
+  .col-xl-3 {
+    grid-column: span 3; /* 4 colunas de exibição de animais */
+  }
+
+  .col-xl-8 {
+    grid-column: span 8;
+  }
+
+  .col-xl-4 {
+    grid-column: span 4;
+  }
+}
+
+
+/* ==========================================================================
+   5. BREAKPOINT EXTRA LARGE / DESKTOPS PANORÂMICOS (≥ 1400px)
+   Monitores ultra-wide e TVs. Mantém o conteúdo centralizado e confortável.
+   ========================================================================== */
+@media (min-width: 1400px) {
+  .grid-container {
+    max-width: 1320px;
+  }
+
+  .col-xxl-2 {
+    grid-column: span 2; /* 6 cards por linha para navegadores amplos */
+  }
+
+  .col-xxl-10 {
+    grid-column: span 10;
+  }
+}
+
+/* FIM DO ACRESCENTADO */
+
+
+
+.layout-sistema {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "sidebar sidebar"
+		"main main"
+        "footer footer";
+    grid-template-columns: 250px 1fr;
+    grid-template-rows:60px 400px 40px;
+    gap: 25px;
+}
+.layout-sistema > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-weight: bold;
+}
+header { grid-area: header; background:var(--color-primary); color: white; }
+aside { grid-area: sidebar; background:var(--color-primary); color: #2c3e50; }
+main { grid-area: main; background: var(--color-neutral-white); color: var(--color-secondary); /* #2c3e50; */
+padding-top:90px;}
+footer { grid-area: footer; background: var(--color-primary); color: white; }
+
+header {
+  display: flex;
+  width: 100%; /* Ocupa toda a largura */
+  height: 90px; /* Altura fixa */
+  position: fixed;
+  top: 0;
+  z-index: 1000; /* Garante que fique acima do conteúdo */
+  
+  /* Ou use min-height: 100px; para altura mínima */
+   /* Estilos adicionais comuns */
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	a {
+  font-size: 1.5rem; /* 50% maior que a base */
+  font-family: 'Calibri', 'Rubik', Arial, sans-serif;
+  font-weight: 700;
+}
+}
+/* declaração abaixo só aumentou a figura
+header > * {
+flex-grow: 1; }/* Todos os filhos crescem igualmente para preencher o espaço */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  border: 2px solid rgb(96 139 168); 
+  border-radius: 25px; 
+  background-color: --color-primary;  /* tijolo claro */
+  padding: 10px;
+  display: block;
+
+}
+
+nav li {
+  flex: auto;
+}
+
+h1  {
+	color: var(--color-primary); /* deveria ser #1E56A0 */
+	/* color: #ff0000; */
+	font-size: var( --font-size-xl); /* 3rem; valor antigo */
+	font-weight: 900;
+	margin-block: 2rem;
+}	
+h2 {
+    color: var( --color-secondary); /*#ff8800; */
+    font-size: var(--font-size-lg); /* 2rem;  */
+    font-weight: 900;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+h3 {
+    color: var( --color-secondary); /*#ff8800; */
+    font-size: var(--font-size-md); /* 2rem;  */
+    font-weight: 900;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+h4 {
+    color: var( --color-neutral-light); /*#ff8800; */
+    font-size: var(--font-size-xs); /* 2rem;  */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.2rem;
+}
+p {
+    color: var(--color-neutral-dark);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.link-documento {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 900;
+}
+.link-documento:hover {
+    color: #2c3e50;
+    text-decoration: underline;
+}
+.link-navegacao {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link-navegacao:hover {
+    color: #8980e9;
+	text-decoration: underline;
+}
+
+.link-navegacao::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3498db;
+    transition: width 0.3s ease;
+}
+
+.link-navegacao:hover::after {
+    width: 100%;
+}
+.botao-primario {
+    all: unset;
+	cursor: pointer;
+	/* background: linear-gradient(135deg, #dc9563 0%, #B04320 100%); - como era */
+	background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary-hover) 100%);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.botao-primario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* definiçcao completa do stack overflow
+all: unset;
+  cursor: pointer;
+  font-size: 26px;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  background: red;
+  border-radius: .5em;
+  transition: background 500ms;
+  display: flex;
+  justify-content: center;
+  align-items: center; */

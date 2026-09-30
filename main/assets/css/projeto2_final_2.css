@@ -1,0 +1,356 @@
+/* ==========================================================================
+   1. DESIGN SYSTEM E VARIÁVEIS NATIVAS (:root)
+   ========================================================================== */
+:root {
+  /* 
+  /* Cores Primárias (Identidade Visual e Ações) *//*Ainda para decidir */
+  --color-primary: #dc9563; /* Laranja, tijolo - Confiança, credibilidade e ação principal */
+  --color-primary-hover: #73BE11; /*verde claro ação correta - Estado hover para botões/links */
+/* Cores Secundárias (Destaque e Identidade Emocional) */ 
+ --color-secondary: #D65A31; /* Terracota/Laranja - Acolhimento, calor humano e urgência de adoção */
+  --color-secondary-hover: #B04320; /* Terracota Escuro - Estado hover para elementos secundários */
+
+  /* Tons Neutros e Superfícies */
+  --color-neutral-dark: #222831; /* Grafite Escuro - Tipografia principal (Alto contraste) */
+  --color-neutral-medium: #6C757D; /* Cinza Médio - Textos secundários e bordas */
+  --color-neutral-light: #F4F6F8; /* Cinza Claro - Backgrounds de cards e seções */
+  --color-neutral-white: #FFFFFF; /* Branco - Fundo da página e texto em botões escuros */
+
+/* ==========================================================================
+    ESCALA TIPOGRÁFICA (5 Patamares Hierárquicos)
+    
+ /* Escala Tipográfica (5 Patamares em rem) */
+  --font-size-xs: 0.875rem; /* 14px *//* 14px - Legendas, badges e microcopy */
+  --font-size-sm: 1.000rem; /* 16px *//* 16px - Corpo de texto padrão e botões */
+  --font-size-md: 1.250rem; /* 20px *//* 20px - Subtítulos de cards e h3 */
+  --font-size-lg: 1.750rem; /* 28px *//* 28px - Títulos de seções e h2 */
+  --font-size-xl: 2.500rem; /* 40px *//* 40px - Título principal (Hero) e h1 */
+
+ /* ==========================================================================
+    ESPAÇAMENTOS MODULARES (Escala de 8px) 
+ /* Espaçamentos Modulares (Base 8px) */
+  --space-xs: 0.5rem;  /* 8px */
+  --space-sm: 1.0rem;  /* 16px */
+  --space-md: 1.5rem;  /* 24px */
+  --space-lg: 2.5rem;  /* 40px */
+  --space-xl: 4.0rem;  /* 64px */
+}
+
+/* Base Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--color-neutral-dark);
+  background-color: var(--color-neutral-white);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   2. CONTENTOR PRINCIPAL E GRID DE 12 COLUNAS (MOBILE-FIRST)
+   ========================================================================== */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-sm);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+/* Classes Utilitárias de Coluna (Padrão 12 Cols no Mobile) */
+.col-12 { grid-column: span 12; }
+.col-8  { grid-column: span 12; }
+.col-6  { grid-column: span 12; }
+.col-4  { grid-column: span 12; }
+.col-3  { grid-column: span 12; }
+
+/* ==========================================================================
+   3. 5 BREAKPOINTS RESPONSIVOS (@media)
+   ========================================================================== */
+
+/* 1. EXTRA SMALL / MOBILE LANDSCAPE (≥ 576px) */
+@media (min-width: 576px) {
+  .grid-container {
+    gap: var(--space-md);
+    padding: 0 var(--space-md);
+  }
+  .col-sm-6 { grid-column: span 6; }
+}
+
+/* 2. SMALL / TABLETS PORTRAIT (≥ 768px) */
+@media (min-width: 768px) {
+  .grid-container { max-width: 720px; }
+  .col-md-4 { grid-column: span 4; }
+  .col-md-6 { grid-column: span 6; }
+  .col-md-8 { grid-column: span 8; }
+}
+
+/* 3. MEDIUM / TABLETS LANDSCAPE E LAPTOPS (≥ 992px) */
+@media (min-width: 992px) {
+  .grid-container { max-width: 960px; }
+  .col-lg-3 { grid-column: span 3; }
+  .col-lg-4 { grid-column: span 4; }
+  .col-lg-9 { grid-column: span 9; }
+}
+
+/* 4. LARGE / DESKTOPS PADRÃO (≥ 1200px) */
+@media (min-width: 1200px) {
+  .grid-container {
+    max-width: 1140px;
+    gap: var(--space-lg);
+  }
+  .col-xl-3 { grid-column: span 3; }
+  .col-xl-4 { grid-column: span 4; }
+  .col-xl-8 { grid-column: span 8; }
+}
+
+/* 5. EXTRA LARGE / PANORÂMICOS (≥ 1400px) */
+@media (min-width: 1400px) {
+  .grid-container { max-width: 1320px; }
+  .col-xxl-3 { grid-column: span 3; }
+}
+
+/* ==========================================================================
+   4. CABEÇALHO E MENU HAMBÚRGUER
+   ========================================================================== */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-neutral-white);
+  border-bottom: 1px solid var(--color-neutral-light);
+  position: relative;
+}
+
+.logo {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-neutral-dark);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-neutral-white);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: var(--space-md);
+  z-index: 99;
+}
+
+.nav-menu.is-active { display: block; }
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: var(--color-neutral-dark);
+  font-weight: 600;
+}
+
+/* Transição para Desktop (≥ 768px) */
+@media (min-width: 768px) {
+  .menu-toggle { display: none; }
+  .nav-menu {
+    display: block;
+    position: static;
+    width: auto;
+    box-shadow: none;
+    padding: 0;
+  }
+  .nav-menu ul {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-md);
+  }
+}
+
+/* ==========================================================================
+   5. BOTÕES E ESTADOS INTERATIVOS
+   ========================================================================== */
+.btn-primary, .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-neutral-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);  
+  box-shadow: 0 4px 12px rgba(30, 86, 160, 0.25);
+  transform: translateY(-2px);
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  background-color: var(--color-neutral-medium);
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--color-neutral-medium);
+  color: var(--color-neutral-dark);
+}
+
+/* ==========================================================================
+   6. FORMULÁRIOS E VALIDAÇÃO VISUAL
+   ========================================================================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.form-control {
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-neutral-medium);
+  border-radius: 4px;
+  background-color: var(--color-neutral-white);
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(30, 86, 160, 0.2);
+}
+
+/* Validações */
+.form-control.is-valid {
+  border-color: #2E7D32;
+  background-color: #F1F8E9;
+}
+
+.form-control.is-invalid {
+  border-color: #D32F2F;
+  background-color: #FFEBEE;
+}
+
+/* ==========================================================================
+   7. ETIQUETAS (BADGES) E ALERTAS
+   ========================================================================== */
+.badge {
+  display: inline-flex;
+  padding: 0.25rem 0.5rem;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+
+.badge-success { background-color: #E8F5E9; color: #2E7D32; }
+.badge-warning { background-color: #FFF8E1; color: #F57F17; }
+.badge-danger  { background-color: #FFEBEE; color: #C62828; }
+
+.alert {
+  padding: var(--space-sm);
+  border-radius: 4px;
+  border-left: 4px solid var(--color-primary);
+  background-color: var(--color-neutral-light);
+  font-size: var(--font-size-sm);
+}
+
+/* ==========================================================================
+   8. COMPONENTES: MODAL E TOAST
+   ========================================================================== */
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: rgba(34, 40, 49, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-backdrop.is-open { display: flex; }
+
+.modal-dialog {
+  background-color: var(--color-neutral-white);
+  border-radius: 8px;
+  padding: var(--space-md);
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal-header, .modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toast-container {
+  position: fixed;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  z-index: 1100;
+}
+
+.toast {
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-neutral-dark);
+  color: var(--color-neutral-white);
+  border-radius: 4px;
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
