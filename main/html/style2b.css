@@ -1,0 +1,601 @@
+:root {
+  /* ==========================================================================
+     1. PALETA DE CORES (8 Cores Distintas)
+     ========================================================================== */
+  /* Cores Primárias (Identidade Visual e Ações) */
+  --color-primary: #dc9563;         /* Laranja, tijolo - Confiança, credibilidade e ação principal #1E56A0*/
+  --color-primary-hover: be6a6a;   /* Laranja Escuro - Estado hover para botões/links */
+
+  /* Cores Secundárias (Destaque e Identidade Emocional) */
+  --color-secondary: #D65A31;       /* Terracota/Laranja - Acolhimento, calor humano e urgência de adoção */
+  --color-secondary-hover: #B04320; /* Terracota Escuro - Estado hover para elementos secundários */
+
+  /* Tons Neutros e Superfícies */
+  --color-neutral-dark: #222831;    /* Grafite Escuro - Tipografia principal (Alto contraste) */
+  --color-neutral-medium: #645e5e;  /* Cinza Médio - Textos secundários e bordas */
+  --color-neutral-light: #8a8484;   /* Cinza Claro - Backgrounds de cards e seções */
+  --color-neutral-white: #FFFFFF;   /* Branco - Fundo da página e texto em botões escuros */
+
+  /* ==========================================================================
+     2. ESCALA TIPOGRÁFICA (5 Patamares Hierárquicos)
+     ========================================================================== */
+  --font-size-xs: 0.900rem; /* 14px - Legendas, badges e microcopy */
+  --font-size-sm: 1.200rem; /* 16px - Corpo de texto padrão e botões */
+  --font-size-md: 1.750rem; /* 20px - Subtítulos de cards e h3 */
+  --font-size-lg: 2.500rem; /* 28px - Títulos de seções e h2 */
+  --font-size-xl: 4.500rem; /* 40px - Título principal (Hero) e h1 */
+
+  /* ==========================================================================
+     3. ESPAÇAMENTOS MODULARES (Escala de 8px)
+     ========================================================================== */
+  --space-xs: 0.5rem;  /* 8px  - Margens internas pequenas, gap entre ícone e texto */
+  --space-sm: 1.0rem;  /* 16px - Padding de botões e espaçamento de elementos internos */
+  --space-md: 1.5rem;  /* 24px - Padding de cards e espaçamento entre parágrafos */
+  --space-lg: 2.5rem;  /* 40px - Margens de seções e lacunas do grid principal */
+  --space-xl: 4.0rem;  /* 64px - Espaçamento do container principal e banners */
+}
+/* ==========================================================================
+   CONFIGURAÇÃO BASE: MOBILE-FIRST (< 576px)
+   ========================================================================== */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-sm); /* Gutter de 16px */
+  padding: 0 var(--space-sm);
+  /* width: 100%; */
+  margin: 0 auto;
+}
+
+/* Por padrão no Mobile, elementos ocupam a largura total de 12 colunas */
+.col-12, .col-8, .col-6, .col-4, .col-3 {
+  grid-column: span 12;
+}
+
+
+/* ==========================================================================
+   1. BREAKPOINT EXTRA SMALL / MOBILE LANDSCAPE (≥ 576px)
+   Dispositivos móveis na horizontal e telas pequenas.
+   ========================================================================== */
+@media (min-width: 576px) {
+  .grid-container {
+    gap: var(--space-md); /* Aumenta o espaçamento entre colunas para 24px */
+    padding: 0 var(--space-md);
+  }
+
+  /* Exemplo: Cards de animais passam a 2 colunas por linha */
+  .col-sm-6 {
+    grid-column: span 6;
+  }
+}
+
+
+/* ==========================================================================
+   2. BREAKPOINT SMALL / TABLETS PORTRAIT (≥ 768px)
+   Tablets na vertical. Separação de áreas de filtros e listagens.
+   ========================================================================== */
+@media (min-width: 768px) {
+  .grid-container {
+    max-width: 720px;
+  }
+
+  .col-md-4 {
+    grid-column: span 4; /* 3 itens por linha */
+  }
+
+  .col-md-6 {
+    grid-column: span 6; /* 2 itens por linha */
+  }
+
+  .col-md-8 {
+    grid-column: span 8; /* Área de conteúdo principal */
+  }
+}
+
+
+/* ==========================================================================
+   3. BREAKPOINT MEDIUM / TABLETS LANDSCAPE E LAPTOPS (≥ 992px)
+   Navegação e layouts mais robustos, permitindo barra lateral (Sidebar).
+   ========================================================================== */
+@media (min-width: 992px) {
+  .grid-container {
+    max-width: 960px;
+  }
+
+  .col-lg-3 {
+    grid-column: span 3; /* Sidebar de Filtro de Adoção (1/4 da tela) */
+  }
+
+  .col-lg-9 {
+    grid-column: span 9; /* Feed de Animais (3/4 da tela) */
+  }
+
+  .col-lg-4 {
+    grid-column: span 4; /* Grid triplo para notícias e resgates */
+  }
+}
+
+
+
+/* ==========================================================================
+   4. BREAKPOINT LARGE / DESKTOPS PADRÃO (≥ 1200px)
+   Telas cheias com espaçamento ideal para leitura e doações.
+   ========================================================================== */
+@media (min-width: 1200px) {
+  .grid-container {
+    max-width: 1140px;
+    gap: var(--space-lg); /* Gutter expandido para 40px */
+  }
+
+  .col-xl-3 {
+    grid-column: span 3; /* 4 colunas de exibição de animais */
+  }
+
+  .col-xl-8 {
+    grid-column: span 8;
+  }
+
+  .col-xl-4 {
+    grid-column: span 4;
+  }
+}
+
+
+/* ==========================================================================
+   5. BREAKPOINT EXTRA LARGE / DESKTOPS PANORÂMICOS (≥ 1400px)
+   Monitores ultra-wide e TVs. Mantém o conteúdo centralizado e confortável.
+   ========================================================================== */
+@media (min-width: 1400px) {
+  .grid-container {
+    max-width: 1320px;
+  }
+
+  .col-xxl-2 {
+    grid-column: span 2; /* 6 cards por linha para navegadores amplos */
+  }
+
+  .col-xxl-10 {
+    grid-column: span 10;
+  }
+}
+/* ==========================================================================
+   4. CABEÇALHO E MENU HAMBÚRGUER
+   Início do trecho que veio do galeria2.css
+   ========================================================================== */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-primary);
+  border-bottom: 1px solid var(--color-neutral-light);
+  position: fixed; /*relative; */
+}
+
+.logo {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-neutral-dark);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: var(--space-md);
+  z-index: 99;
+}
+
+.nav-menu.is-active { display: block; }
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: var(--color-neutral-dark);
+  font-weight: 600;
+}
+/* Transição para Desktop (≥ 768px) */
+@media (min-width: 768px) {
+  .menu-toggle { display: none; }
+  .nav-menu {
+    display: block;
+    position: static;
+    width: auto;
+    box-shadow: none;
+    padding: 0;
+  }
+  .nav-menu ul {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-md);
+  }
+}
+/* ==========================================================================
+   5. BOTÕES E ESTADOS INTERATIVOS
+   ========================================================================== */
+.btn-primary, .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-neutral-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);  
+  box-shadow: 0 4px 12px rgba(30, 86, 160, 0.25);
+  transform: translateY(-2px);
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  background-color: var(--color-neutral-medium);
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--color-neutral-medium);
+  color: var(--color-neutral-dark);
+  
+  
+
+/* ate aqui veio do galeria2.css */
+/*.layout-sistema {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "sidebar lateral"
+		"main main"
+        "footer footer";
+    grid-template-columns: 250px 1fr;
+    grid-template-rows:60px 400px 40px;
+    gap: 25px;
+}
+.layout-sistema > * {
+    display: flex;
+    /* align-items: center; 
+    justify-content: center;
+    border-radius: 6px;
+    font-weight: bold;
+	} */
+.main-header {
+  grid-column: col-start / span 12;
+  grid-row:1;
+  background-color: var(--color-primary);
+/* inicio das propriedades acrescentadas */
+  height: 50px; /* altura fixa para teste */
+ /* position: fixed /* 2 linhas acrescentadas */
+  z-index: 1000 /* garante que fique acima do conteúdo */
+  font-size: 1.5rem; /* 50% maior que a base */
+  font-family: 'Calibri', 'Rubik', Arial, sans-serif;
+  font-weight: 700;
+}
+.lateral{
+  grid-column: 1 / span 4;
+  grid-row:2;
+  background-color: #dc9563;
+  font-size: 1.5rem; /* 50% maior que a base */
+  font-family: 'Calibri', 'Rubik', Arial, sans-serif;
+  font-weight: 500;
+	
+}
+
+.footer {
+  grid-column: 1 / span 12;
+  grid-row:3;
+  background-color: #dc9563;
+  font-size: 0.8rem; /* 50% maior que a base */
+  font-family: 'Calibri', 'Rubik', Arial, sans-serif;
+  font-weight: 700;
+  text-align: center;
+	
+}
+
+.content { 
+	
+	grid-column:  4 / span 9; 
+	grid-row:2;
+	background: var(--color-neutral-white); 
+	color: #F7E2C4 /*var(--color-secondary); /* #2c3e50; */
+	padding-top:90px;
+}
+/* Espaçamento superior para compensar o header com position: fixed */
+.main-content {
+  padding-top: 800px;
+}
+
+/* Garante o alinhamento em até 3 ou 4 colunas responsivas */
+/* inserido pelo gemini */
+.pet-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Cria várias colunas dinamicamente */
+  gap: var(--space-md);
+  padding: var(--space-md);
+}
+	
+header { grid-area: header; background:var(--color-primary); color: white; }
+/* aside { grid-area: lateral; background:var(--color-primary); color: #2c3e50;
+padding-top: 50px;} */
+
+footer { grid-area: footer; background: var(--color-primary); color: white; }
+
+/*  header {
+  display: flex;
+  width: 100%; /* Ocupa toda a largura 
+  height: 50px; /* Altura fixa 
+  position: fixed; 
+  top: 0;
+  z-index: 1000; /* Garante que fique acima do conteúdo */
+  
+  /* Ou use min-height: 100px; para altura mínima */
+   /* Estilos adicionais comuns 
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	a {
+  font-size: 1.5rem; /* 50% maior que a base 
+  font-family: 'Calibri', 'Rubik', Arial, sans-serif;
+  font-weight: 700;
+	}
+} */ 
+
+.botao-primario {
+    all: unset;
+	cursor: pointer;
+	/* background: linear-gradient(135deg, #dc9563 0%, #B04320 100%); - como era  */
+	background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary-hover) 100%);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.botao-primario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+} 
+	
+	/* trecho do galeria2 */
+	
+	/* ==========================================================================
+   6. FORMULÁRIOS E VALIDAÇÃO VISUAL
+   ========================================================================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.form-control {
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-neutral-medium);
+  border-radius: 4px;
+  background-color: var(--color-neutral-white);
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(30, 86, 160, 0.2);
+}
+
+/* Validações */
+.form-control.is-valid {
+  border-color: #2E7D32;
+  background-color: #F1F8E9;
+}
+
+.form-control.is-invalid {
+  border-color: #D32F2F;
+  background-color: #FFEBEE;
+}
+
+/* ==========================================================================
+   7. ETIQUETAS (BADGES) E ALERTAS
+   ========================================================================== */
+/* original 
+.badge {
+  display: inline-flex;
+  padding: 0.25rem 0.5rem;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+
+.badge-success { background-color: #E8F5E9; color: #2E7D32; }
+.badge-warning { background-color: #FFF8E1; color: #F57F17; }
+.badge-danger  { background-color: #FFEBEE; color: #C62828; } */
+
+/* Correção para visibilidade e destaque das Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.badge-success { background-color: #2E7D32 !important; color: #FFFFFF !important; }
+.badge-warning { background-color: #F57F17 !important; color: #FFFFFF !important; }
+.badge-danger  { background-color: #C62828 !important; color: #FFFFFF !important; }
+
+.alert {
+  padding: var(--space-sm);
+  border-radius: 4px;
+  border-left: 4px solid var(--color-primary);
+  background-color: var(--color-neutral-light);
+  font-size: var(--font-size-sm);
+}
+
+/* ==========================================================================
+   8. COMPONENTES: MODAL E TOAST
+   ========================================================================== */
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: rgba(34, 40, 49, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-backdrop.is-open { display: flex; }
+
+.modal-dialog {
+  background-color: var(--color-neutral-white);
+  border-radius: 8px;
+  padding: var(--space-md);
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal-header, .modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toast-container {
+  position: fixed;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  z-index: 1100;
+}
+
+.toast {
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-neutral-dark);
+  color: var(--color-neutral-white);
+  border-radius: 4px;
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+
+/* seção dos cards */
+/* Estilo do container que organiza a grade */
+.pet-cards-container {
+  display: grid;
+  padding: var(--space-sm) var(--space-md);
+  /* Cria 3 colunas de tamanhos iguais */
+  grid-template-columns: repeat(4, 1fr); 
+  /* Espaçamento entre os cards */
+  gap: 20px; 
+}
+
+/* Estilo individual do card - usado originalmente  */
+/* .pet-card {
+  border: 5px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  display: grid;  /* era grid ou flex ficou igual 
+  flex-direction: row; /* column;
+} */
+
+/* Ajuste do gemini na estrutura interna do Card */
+.pet-card {
+  border: 1px solid var(--color-neutral-light);
+  border-radius: 8px;
+  padding: var(--space-sm);
+  background-color: var(--color-neutral-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* tentativa por mds */
+.pet-card-footer {
+	border: 1px solid var(--color-neutral-light);
+  border-radius: 8px;
+  padding: var(--space-sm);
+  background-color: var(--color-neutral-white);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+/* para usar flex ao inves de grid */
+.pet-cards-container-flex {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os cards dobrem para a próxima linha */
+  gap: 20px;       /* Espaço entre os cards */
+}
+
+.pet-card-flex {
+  /* Calcula a largura para caber exatamente 3 cards considerando o espaçamento */
+  flex: 0 0 calc(25.00% - 14px); 
+  box-sizing: border-box;
+  border: 5px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+/* Garante que a imagem se ajuste bem dentro do card */
+.pet-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Recorta suavemente a imagem para preencher sem distorcer */
+  border-radius: 6px;
+  margin-top: 10px;
+}
