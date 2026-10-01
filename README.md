@@ -1,7 +1,10 @@
 # Projeto4
+Descrição:
 Trabalho acadêmico com site da ONG fictícia Quatro Patas
 Em fase de pré-lançamento (v.0.0.1).
-Descrição: apresenta o site da ONG Quatro Patas
+
+Objetivo: apresenta o site da ONG Quatro Patas
+
 Utilização: 
 1. faça o download do repositório Projeto4 para sua máquina
 2. abra o arquivo index.html na raiz do diretório para iniciar a navegação
